@@ -9,12 +9,22 @@ public class PlayerMovement : MonoBehaviour
         GrassWalk,
         GrassLand
     }
+    public enum GravityType
+    {
+        Basic,
+        Floaty,
+        Inverted,
+        PosX,
+        PosZ,
+        NegX,
+        NegZ
+    }
     public float movementspeed = 30f;
     public float rotationspeed = 4f;
     Rigidbody myrb;
     public GameObject headCamera;
     public Vector3 offsetCam;
-    bool airborne;
+    bool airborne = true;
     float movespeed = 1;
     int repeatedchecks = 0;
     [SerializeField] float hbopscale = 0f;
@@ -23,17 +33,28 @@ public class PlayerMovement : MonoBehaviour
     float hbophigh = 0.13f;
     int dir = 1;
     [SerializeField]int sprintframes = 0;
+    int st = 100;
     [SerializeField] bool sprintable = false;
     [SerializeField] bool sprinting = false;
+    bool exhausted = false;
     bool landIncoming = false;
     public AudioClip[] terrainsounds;
+    public AudioClip[] gasps;
     public AudioSource footsteps;
+    public AudioSource mouth;
     int terrainsound = 0;
+    public HUDManager hud;
 
     // Start is called before the first frame update
     void Start()
     {
         myrb = gameObject.GetComponent<Rigidbody>();
+        ResetGravity();
+    }
+
+    public static void ResetGravity()
+    {
+        Physics.gravity = new Vector3(0, -20f, 0);
     }
 
     private void Update()
@@ -57,6 +78,7 @@ public class PlayerMovement : MonoBehaviour
         if (speed > thresholdForDir) { speed = 1f; }
         else if (speed < -thresholdForDir) { speed = -0.5f; }
         else { speed = 0f; }
+        if (exhausted && st > 200) { exhausted = false; }
         // Ran out of opportunity to sprint:
         if (sprintframes < 0 ) { sprintframes = 0; sprintable = false; sprinting = false; }
         // Letting go of up allows for Sprint
@@ -67,20 +89,23 @@ public class PlayerMovement : MonoBehaviour
         else if (speed > thresholdForDir) { sprintframes = 30; }
         if (Mathf.Abs(speed) > thresholdForDir && !airborne)
         {
-            if (sprinting)
+            if (sprinting && st > 0 && !exhausted)
             {
+                st -= 3; if (st <= 0) { st = 0; mouth.PlayOneShot(gasps[0]); exhausted = true; }
                 movespeed = 15;
                 speed *= 1.7f;
             }
             else
             {
+                st++;
                 movespeed = 7;
             }
         }
-        else if (!airborne) { movespeed = 1f; }
+        else if (!airborne && !exhausted) { movespeed = 1f; st += 5; if (st > 1000) { st = 1000; } }
         else if (airborne) { landIncoming = true; movespeed = 0.01f; }
+        else { st += 1; if (st > 1000) { st = 1000; } }
         if (hbopscale < hboplow - 0.05f) { speed *= 0.2f; }
-            
+        hud.SetStamina(st);
         myrb.AddForce(transform.forward * movementspeed * speed, ForceMode.Acceleration);
     }
 
@@ -102,24 +127,25 @@ public class PlayerMovement : MonoBehaviour
 
     private void CheckVelocity(int check)
     {
-        if (myrb.velocity.y < -2f) { airborne = true; }
         if (myrb.velocity.y == 0 && airborne) { repeatedchecks++; }
         else { repeatedchecks = 0; }
         if (repeatedchecks > 3) { airborne = false; }
-        if (transform.position.y < -20) { transform.position = Vector3.zero; }
+        if (transform.position.y < -300) { transform.position = Vector3.zero; }
+        if (myrb.velocity.y < -2f) { airborne = true; }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (Mathf.Abs(myrb.velocity.y) < 0.5f && landIncoming)
+        if (Mathf.Abs(collision.contacts[0].normal.y) > 0.7f && landIncoming)
         {
             GetSoundOf(FoliageSounds.GrassLand);
             footsteps.pitch = 0.9f;
             sprinting = false;
             sprintable = false;
+            airborne = false;
             sprintframes = 0;
-            dir = -200;
-            hboplow = -0.3f;
+            dir = -100;
+            hboplow = -0.2f;
             movespeed = 1f;
         }
     }
