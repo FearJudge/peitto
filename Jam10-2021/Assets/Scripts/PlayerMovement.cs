@@ -38,15 +38,22 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]int sprintframes = 0;
     int recoveryframes = 0;
     int st = 100;
+    public float sensitivity = 2;
+    public float smoothing = 1.5f;
+    Vector2 velocity;
+    Vector2 frameVelocity;
     [SerializeField] bool sprintable = false;
     [SerializeField] bool sprinting = false;
+    public bool unexhaustable = false;
     bool exhausted = false;
     bool landIncoming = false;
     public AudioClip[] terrainsounds;
     public AudioClip[] gasps;
-    public AudioSource footsteps;
+    public AudioSource[] footsteps;
     public AudioSource mouth;
+    public int doubleFootsteps = 0;
     int terrainsound = 0;
+    float leghurt = 0.2f;
     public HUDManager hud;
 
     // Start is called before the first frame update
@@ -54,6 +61,7 @@ public class PlayerMovement : MonoBehaviour
     {
         myrb = gameObject.GetComponent<Rigidbody>();
         ResetGravity();
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     public static void ResetGravity()
@@ -65,22 +73,46 @@ public class PlayerMovement : MonoBehaviour
     {
         Jump();
         HeadBop();
+        CaptureMouse();
+        OpenFiles();
+    }
+
+    void OpenFiles()
+    {
+        if (Input.GetKeyDown(KeyCode.Q)) { FileManager.OpenFileFolder(); }
+        if (Input.GetKeyDown(KeyCode.Escape)) { hud.ShowQuit(true); }
+    }
+
+    void CaptureMouse()
+    {
+        // Get smooth velocity.
+        Vector2 mouseDelta = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
+        Vector2 rawFrameVelocity = Vector2.Scale(mouseDelta, Vector2.one * sensitivity);
+        frameVelocity = Vector2.Lerp(frameVelocity, rawFrameVelocity, 1 / smoothing);
+        velocity += frameVelocity;
+        velocity.y = Mathf.Clamp(velocity.y, -90, 90);
+
+        // Rotate camera up-down and controller left-right from velocity.
+        Camera.main.transform.localRotation = Quaternion.AngleAxis(-velocity.y, Vector3.right);
+        transform.rotation = Quaternion.AngleAxis(velocity.x, Vector3.up);
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        MoveForward();
-        Rotate();
+        Move();
+        //Rotate();
         CheckVelocity(repeatedchecks);
     }
 
-    void MoveForward(float thresholdForDir = 0.3f)
+    void Move(float thresholdForDir = 0.3f)
     {
         sprintframes--;
-        float speed = Input.GetAxisRaw("Vertical");
+        float strafe = Input.GetAxisRaw("Horizontal");
+        if (Mathf.Abs(strafe) < 0.3f) { strafe = 0; }
+        float speed = Input.GetAxisRaw("Vertical") * (1 - strafe*0.6f);
         if (speed > thresholdForDir) { speed = 1f; }
-        else if (speed < -thresholdForDir) { speed = -0.5f; }
+        else if (speed < -thresholdForDir) { speed = -0.8f; }
         else { speed = 0f; }
         if (exhausted && st > 200) { exhausted = false; }
         // Ran out of opportunity to sprint:
@@ -95,7 +127,8 @@ public class PlayerMovement : MonoBehaviour
         {
             if (sprinting && st > 0 && !exhausted)
             {
-                st -= 3; if (st <= 0) { st = 0; mouth.PlayOneShot(gasps[0]); exhausted = true; }
+                if (!unexhaustable) { st -= 3; }
+                if (st <= 0) { st = 0; mouth.PlayOneShot(gasps[0]); exhausted = true; }
                 movespeed = 15;
                 speed *= 1.7f;
             }
@@ -108,9 +141,10 @@ public class PlayerMovement : MonoBehaviour
         else if (!airborne && !exhausted) { movespeed = 1f; st += 5; if (st > 1000) { st = 1000; } }
         else if (airborne) { landIncoming = true; movespeed = 0.01f; }
         else { st += 1; if (st > 1000) { st = 1000; } }
-        if (hbopscale < hboplow - 0.05f) { speed *= 0.2f; }
+        if (hbopscale < hboplow - 0.05f) { speed *= leghurt; }
         hud.SetStamina(st);
         myrb.AddForce(transform.forward * movementspeed * speed, ForceMode.Acceleration);
+        myrb.AddForce(transform.right * strafe * movementspeed, ForceMode.Acceleration);
     }
 
     void Rotate()
@@ -144,25 +178,39 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Mathf.Abs(collision.contacts[0].normal.y) > 0.7f && landIncoming)
         {
-            GetSoundOf(FoliageSounds.GrassLand);
-            footsteps.pitch = 0.9f;
+            float percentage = Mathf.Clamp(collision.impulse.magnitude / 20f, 0.1f, 1f);
+            Debug.Log(percentage);
             sprinting = false;
             sprintable = false;
             airborne = false;
             sprintframes = 0;
-            recoveryframes = 40;
             jumps = midairjumps;
-            dir = -100;
-            hboplow = -0.2f;
             movespeed = 1f;
+            if (percentage < 0.28f) { return; }
+            GetSoundOf(FoliageSounds.GrassLand);
+            footsteps[0].pitch = 1f - percentage * 0.2f;
+            recoveryframes = 30;
+            dir = -1;
+            hboplow = 0f - 0.7f * percentage;
+            hbopscale = hboplow;
         }
     }
 
     private void HeadBop()
     {
         hbopscale += hbopspeed * Time.deltaTime * dir * Mathf.Clamp(Mathf.Abs(hbopscale - hbophigh * 0.87f), 0.02f, 0.1f) * (movespeed * 500);
-        if (hbopscale < hboplow) { if ((movespeed > 1 || landIncoming) && dir < 0) { landIncoming = false; footsteps.PlayOneShot(terrainsounds[terrainsound]); } dir = 1; hboplow = 0f; }
-        else if (hbopscale > hbophigh) { dir = -1; hbophigh = 0.13f; footsteps.pitch = Random.Range(1.0f, 1.4f); GetSoundOf(FoliageSounds.GrassWalk); }
+        if (hbopscale < hboplow)
+        {
+            if ((movespeed > 1 || landIncoming) && dir < 0)
+            {
+                if (!landIncoming) { footsteps[0].pitch = Random.Range(1.0f, 1.4f); }
+                landIncoming = false;
+                footsteps[0].PlayOneShot(terrainsounds[terrainsound]);
+                if (doubleFootsteps > 0) { StartCoroutine(GhostStep(terrainsound)); }            }
+            dir = 1;
+            hboplow = 0f;
+        }
+        else if (hbopscale > hbophigh) { dir = -1; hbophigh = 0.13f; GetSoundOf(FoliageSounds.GrassWalk); }
         headCamera.transform.localPosition = Vector3.up * hbopscale + offsetCam;
     }
 
@@ -180,5 +228,13 @@ public class PlayerMovement : MonoBehaviour
                 terrainsound = 0;
                 return;
         }
+    }
+
+    IEnumerator GhostStep(int b)
+    {
+        yield return new WaitForSeconds(12f + Random.Range(0, 0.3f));
+        footsteps[1].pitch = 0.6f;
+        footsteps[1].PlayOneShot(terrainsounds[b]);
+        doubleFootsteps--;
     }
 }

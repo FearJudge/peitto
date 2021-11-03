@@ -13,36 +13,44 @@ public class FileManager : MonoBehaviour
     {
         new TextData("I Can't Jump Four Times", "In order to jump, one must", "Exert force against a surface.", new string[] { "Exert force against a surface." }),
         new TextData("Trees are tangible", "Even the most freeminded spirit can not", "push through solid matter.", new string[] { "push through solid matter.", "collide with Trees." }),
+        new TextData("I need to Breathe", "Air is for the weak,", "unlimit your body.", new string[] { "unlimit your body.", "and not for the strong." }),
     };
     // Start is called before the first frame update
     void Start()
     {
         reason = gameObject.GetComponent<Reason>();
         path = Application.dataPath + "\\..\\Reasoning\\";
-        CreateFile(ruleDatas[0], true);
+        CreateFile(ruleDatas[0]);
+        CreateFile(ruleDatas[2]);
     }
 
     private void OnApplicationFocus(bool focus)
     {
         if (!focus || reason == null) { return; }
+        reason.BackInGame();
         int a = CheckFileForAnswers(ruleDatas[0]);
         if (a == -1) { reason.StartEffect(Reason.Reasoning.JumpOnce); }
+        int b = CheckFileForAnswers(ruleDatas[2]);
+        if (b == -1) { reason.StartEffect(Reason.Reasoning.InfinteRun); }
+    }
+
+    public static void OpenFileFolder()
+    {
+        if (!System.IO.Directory.Exists(path)) { System.IO.Directory.CreateDirectory(path); }
+        try
+        {
+            Process.Start(path);
+        }
+        catch (System.Exception)
+        {
+            throw;
+        }
     }
 
     public static void CreateFile(TextData SerData, bool tryOpen=false)
     {
         if (!System.IO.Directory.Exists(path)) { System.IO.Directory.CreateDirectory(path); }
-        if (tryOpen)
-        {
-            try
-            {
-                Process.Start(path);
-            }
-            catch (System.Exception)
-            {
-                throw;
-            }
-        }     
+        if (tryOpen) { OpenFileFolder(); }
         StreamWriter filustreamu = new StreamWriter(path + SerData.filename + ".txt");
         filustreamu.WriteLine(FileStart(0));
         filustreamu.WriteLine(SerData.WriteText(0));
