@@ -32,7 +32,11 @@ public class PlayerMovement : MonoBehaviour
     float hboplow = 0f;
     float hbophigh = 0.13f;
     int dir = 1;
+    int jumps = 0;
+    int midairjumps = 0;
+    public int Midairjumps { get { return midairjumps; } set { midairjumps = value; jumps = midairjumps; } }
     [SerializeField]int sprintframes = 0;
+    int recoveryframes = 0;
     int st = 100;
     [SerializeField] bool sprintable = false;
     [SerializeField] bool sprinting = false;
@@ -116,8 +120,9 @@ public class PlayerMovement : MonoBehaviour
 
     void Jump()
     {
-        if (Input.GetButtonDown("Submit") && !airborne)
+        if (Input.GetButtonDown("Submit") && (!airborne || jumps > 0))
         {
+            if (airborne) { jumps--; }
             airborne = true;
             movespeed = 0;
             myrb.AddForce(new Vector3(0, 12f, 0), ForceMode.Impulse);
@@ -131,7 +136,8 @@ public class PlayerMovement : MonoBehaviour
         else { repeatedchecks = 0; }
         if (repeatedchecks > 3) { airborne = false; }
         if (transform.position.y < -300) { transform.position = Vector3.zero; }
-        if (myrb.velocity.y < -2f) { airborne = true; }
+        if (myrb.velocity.y < -6f && recoveryframes == 0) { airborne = true; }
+        if (recoveryframes > 0) { recoveryframes--; }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -144,6 +150,8 @@ public class PlayerMovement : MonoBehaviour
             sprintable = false;
             airborne = false;
             sprintframes = 0;
+            recoveryframes = 40;
+            jumps = midairjumps;
             dir = -100;
             hboplow = -0.2f;
             movespeed = 1f;

@@ -2,33 +2,47 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using System.Diagnostics;
 
 public class FileManager : MonoBehaviour
 {
+    private Reason reason;
+
     static string path;
-    List<TextData> ruleDatas = new List<TextData>
+    public static List<TextData> ruleDatas = new List<TextData>
     {
-        new TextData("I can not jump twice", "In order to jump, one must", "Exert force against a surface.", new string[] { "Exert force against a surface." }),
+        new TextData("I Can't Jump Four Times", "In order to jump, one must", "Exert force against a surface.", new string[] { "Exert force against a surface." }),
         new TextData("Trees are tangible", "Even the most freeminded spirit can not", "push through solid matter.", new string[] { "push through solid matter.", "collide with Trees." }),
     };
     // Start is called before the first frame update
     void Start()
     {
-        path = Application.dataPath + "\\..\\";
-        CreateFile(ruleDatas[0]);
+        reason = gameObject.GetComponent<Reason>();
+        path = Application.dataPath + "\\..\\Reasoning\\";
+        CreateFile(ruleDatas[0], true);
     }
 
     private void OnApplicationFocus(bool focus)
     {
-        if (!focus) { return; }
+        if (!focus || reason == null) { return; }
         int a = CheckFileForAnswers(ruleDatas[0]);
-        Debug.Log(a);
-        if (a == 0 || a == 1) { Debug.Log("Hello there to you too!"); }
-        if (a == 2) { Debug.Log("WOW!"); }
+        if (a == -1) { reason.StartEffect(Reason.Reasoning.JumpOnce); }
     }
 
-    static void CreateFile(TextData SerData)
+    public static void CreateFile(TextData SerData, bool tryOpen=false)
     {
+        if (!System.IO.Directory.Exists(path)) { System.IO.Directory.CreateDirectory(path); }
+        if (tryOpen)
+        {
+            try
+            {
+                Process.Start(path);
+            }
+            catch (System.Exception)
+            {
+                throw;
+            }
+        }     
         StreamWriter filustreamu = new StreamWriter(path + SerData.filename + ".txt");
         filustreamu.WriteLine(FileStart(0));
         filustreamu.WriteLine(SerData.WriteText(0));
@@ -38,7 +52,7 @@ public class FileManager : MonoBehaviour
     static int CheckFileForAnswers(TextData SerData)
     {
         if (SerData == null) { return -2; }
-        if (!File.Exists(path + SerData.filename + ".txt")) { return 0; }
+        if (!File.Exists(path + SerData.filename + ".txt")) { return -1; }
         StreamReader filustreamu = new StreamReader(path + SerData.filename + ".txt");
         filustreamu.ReadLine();
         string answer = filustreamu.ReadLine().Substring(SerData.lines[0].preamble.Length);

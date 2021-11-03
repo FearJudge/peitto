@@ -15,11 +15,11 @@ D:/Users/Taisto/Documents/GitHub/peitto/Jam10-2021
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-50549
+53521
 Successfully changed project path to: D:/Users/Taisto/Documents/GitHub/peitto/Jam10-2021
 D:/Users/Taisto/Documents/GitHub/peitto/Jam10-2021
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 59.15 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 60.86 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.3.21f1 (a38c86f6690f)
 [Subsystems] Discovering subsystems at path D:/Program Files/Unity/2020.3.21f1/Editor/Data/Resources/UnitySubsystems
@@ -35,39 +35,39 @@ Initialize mono
 Mono path[0] = 'D:/Program Files/Unity/2020.3.21f1/Editor/Data/Managed'
 Mono path[1] = 'D:/Program Files/Unity/2020.3.21f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = 'D:/Program Files/Unity/2020.3.21f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56300
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56912
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: D:/Program Files/Unity/2020.3.21f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
 Register platform support module: D:/Program Files/Unity/2020.3.21f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.002168 seconds.
+Registered in 0.002153 seconds.
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 54.44 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 53.32 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  3.289 seconds
+- Completed reload, in  3.306 seconds
 Domain Reload Profiling:
-	ReloadAssembly (3289ms)
-		BeginReloadAssembly (93ms)
+	ReloadAssembly (3306ms)
+		BeginReloadAssembly (98ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (1ms)
-		EndReloadAssembly (479ms)
-			LoadAssemblies (93ms)
+		EndReloadAssembly (466ms)
+			LoadAssemblies (97ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (157ms)
+			SetupTypeCache (155ms)
 			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (33ms)
-			SetupLoadedEditorAssemblies (187ms)
+			RebuildScriptCaches (31ms)
+			SetupLoadedEditorAssemblies (183ms)
 				LogAssemblyErrors (0ms)
 				InitializePlatformSupportModulesInManaged (5ms)
-				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (55ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (53ms)
 				BeforeProcessingInitializeOnLoad (16ms)
-				ProcessInitializeOnLoadAttributes (83ms)
+				ProcessInitializeOnLoadAttributes (80ms)
 				ProcessInitializeOnLoadMethodAttributes (28ms)
 				AfterProcessingInitializeOnLoad (0ms)
 				EditorAssembliesLoaded (0ms)
@@ -75,52 +75,52 @@ Domain Reload Profiling:
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.006630 seconds.
+Registered in 0.007234 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 0.64 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 0.58 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.198 seconds
+- Completed reload, in  1.137 seconds
 Domain Reload Profiling:
-	ReloadAssembly (1199ms)
-		BeginReloadAssembly (196ms)
+	ReloadAssembly (1138ms)
+		BeginReloadAssembly (184ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (5ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (22ms)
-		EndReloadAssembly (944ms)
-			LoadAssemblies (141ms)
+			CreateAndSetChildDomain (19ms)
+		EndReloadAssembly (894ms)
+			LoadAssemblies (142ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (328ms)
+			SetupTypeCache (325ms)
 			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (46ms)
-			SetupLoadedEditorAssemblies (367ms)
+			RebuildScriptCaches (44ms)
+			SetupLoadedEditorAssemblies (328ms)
 				LogAssemblyErrors (0ms)
 				InitializePlatformSupportModulesInManaged (6ms)
 				SetLoadedEditorAssemblies (0ms)
 				RefreshPlugins (1ms)
 				BeforeProcessingInitializeOnLoad (83ms)
-				ProcessInitializeOnLoadAttributes (262ms)
-				ProcessInitializeOnLoadMethodAttributes (11ms)
+				ProcessInitializeOnLoadAttributes (226ms)
+				ProcessInitializeOnLoadMethodAttributes (9ms)
 				AfterProcessingInitializeOnLoad (4ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (8ms)
+			AwakeInstancesAfterBackupRestoration (7ms)
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.05 seconds
-Refreshing native plugins compatible for Editor in 0.62 ms, found 2 plugins.
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.06 seconds
+Refreshing native plugins compatible for Editor in 0.65 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 1899 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 181.9 MB.
-System memory in use after: 181.9 MB.
+System memory in use before: 182.0 MB.
+System memory in use after: 182.0 MB.
 
 Unloading 20 unused Assets to reduce memory usage. Loaded Objects now: 2353.
-Total: 3.480600 ms (FindLiveObjects: 0.243200 ms CreateObjectMapping: 0.090900 ms MarkObjects: 2.997600 ms  DeleteObjects: 0.147700 ms)
+Total: 4.001700 ms (FindLiveObjects: 0.272300 ms CreateObjectMapping: 0.114800 ms MarkObjects: 3.447700 ms  DeleteObjects: 0.165200 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
@@ -134,193 +134,257 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  path: Assets/woodshack_door.png
-  artifactKey: Guid(58a62e8971f869d44845113ac473de33) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/woodshack_door.png using Guid(58a62e8971f869d44845113ac473de33) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '402e8efa7bc10805e7af33f8945911be') in 0.093208 seconds 
-  Import took 0.111177 seconds .
+  path: Assets/Haunted_Swamp/Materials/oakBranch_s.mat
+  artifactKey: Guid(c09a62efc0359d6438bc42c4cfe46a5d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Haunted_Swamp/Materials/oakBranch_s.mat using Guid(c09a62efc0359d6438bc42c4cfe46a5d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e66272cc66736b18e9ab78fdf67b5af4') in 0.142750 seconds 
+  Import took 0.146430 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000250 seconds.
-  path: Assets/woodshack.png
-  artifactKey: Guid(e060c61fe0d943c48859aaa2545e29f8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/woodshack.png using Guid(e060c61fe0d943c48859aaa2545e29f8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3cec5b6cd797be271d6d5a436114daee') in 0.010665 seconds 
-  Import took 0.013915 seconds .
+  Time since last request: 35.518591 seconds.
+  path: Assets/Haunted_Swamp/Textures/Boulder_c.png
+  artifactKey: Guid(d2de5ec982b301e4488c0dace88b380a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Haunted_Swamp/Textures/Boulder_c.png using Guid(d2de5ec982b301e4488c0dace88b380a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '75537cb0cb6ffa7326e564be86c9c968') in 0.041485 seconds 
+  Import took 0.045081 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000220 seconds.
-  path: Assets/woodshack.blend
-  artifactKey: Guid(46298c2becf6d754c972bc3220736188) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/woodshack.blend using Guid(46298c2becf6d754c972bc3220736188) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9cdf07e8b79de8310d27bde96c7906de') in 0.133583 seconds 
-  Import took 0.153699 seconds .
+  Time since last request: 0.000294 seconds.
+  path: Assets/Haunted_Swamp/Textures/tree01_c.tif
+  artifactKey: Guid(f245cbfff3aa87048b94c1db7f326774) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Haunted_Swamp/Textures/tree01_c.tif using Guid(f245cbfff3aa87048b94c1db7f326774) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bda29d1025c06ac9a2f456957aa14bda') in 0.015946 seconds 
+  Import took 0.037674 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 127.490005 seconds.
-  path: Assets/woodshack.blend
-  artifactKey: Guid(46298c2becf6d754c972bc3220736188) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/woodshack.blend using Guid(46298c2becf6d754c972bc3220736188) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6641b52564254635bf16385101b31845') in 0.103712 seconds 
-  Import took 0.107655 seconds .
+  Time since last request: 0.000323 seconds.
+  path: Assets/Haunted_Swamp/Textures/tree01_n.tif
+  artifactKey: Guid(e57f610bcf6f9284faf0b371967a1ce3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Haunted_Swamp/Textures/tree01_n.tif using Guid(e57f610bcf6f9284faf0b371967a1ce3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '135280fdc1e1d2ccabce4039b9b24a41') in 0.011373 seconds 
+  Import took 0.014634 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 495.460548 seconds.
-  path: Assets/tree_oak.png
-  artifactKey: Guid(09c826c7cbc5aa646a7b4c6c092c4b82) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/tree_oak.png using Guid(09c826c7cbc5aa646a7b4c6c092c4b82) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4ec10d0c1e8c8c23ebc87b66b469e55b') in 0.049470 seconds 
-  Import took 0.068200 seconds .
+  Time since last request: 0.000282 seconds.
+  path: Assets/Haunted_Swamp/Textures/fallentree_c.tif
+  artifactKey: Guid(ddfe00c0f2849584abd15cfda940ed5c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Haunted_Swamp/Textures/fallentree_c.tif using Guid(ddfe00c0f2849584abd15cfda940ed5c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '633d21510f3ee4dbbdf9bac924881893') in 0.019188 seconds 
+  Import took 0.022931 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 8.522676 seconds.
-  path: Assets/tree_oak01.blend
-  artifactKey: Guid(b0fed8a4331ab9f46be34a0ff494637b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/tree_oak01.blend using Guid(b0fed8a4331ab9f46be34a0ff494637b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b78213fc854d52f2e1f20165af7de8f1') in 0.063199 seconds 
-  Import took 0.066685 seconds .
+  Time since last request: 0.000287 seconds.
+  path: Assets/Haunted_Swamp/Textures/Boulder_L_n.png
+  artifactKey: Guid(6c8012a597ecef14882bcbc9f033854a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Haunted_Swamp/Textures/Boulder_L_n.png using Guid(6c8012a597ecef14882bcbc9f033854a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c7a51cef3636ba48a4c7cec38bd480d1') in 0.025487 seconds 
+  Import took 0.028728 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 2325.847525 seconds.
-  path: Assets/woodshack.blend
-  artifactKey: Guid(46298c2becf6d754c972bc3220736188) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/woodshack.blend using Guid(46298c2becf6d754c972bc3220736188) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '913c4681d4ec2d0c2fd6bc2aee820380') in 0.078769 seconds 
-  Import took 0.083105 seconds .
+  Time since last request: 0.000336 seconds.
+  path: Assets/Haunted_Swamp/Textures/treestraight_n.tif
+  artifactKey: Guid(e873689071154b2419bb044f99d44cf3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Haunted_Swamp/Textures/treestraight_n.tif using Guid(e873689071154b2419bb044f99d44cf3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '976ac4c902d6faa12849421e13d1354a') in 0.011184 seconds 
+  Import took 0.014327 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000329 seconds.
-  path: Assets/woodshack.png
-  artifactKey: Guid(8d0d7bc78e9ad5446a63f778643cf8dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/woodshack.png using Guid(8d0d7bc78e9ad5446a63f778643cf8dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '143c4998a79f0f763655109a62cfaa80') in 0.009552 seconds 
-  Import took 0.013426 seconds .
+  Time since last request: 0.000288 seconds.
+  path: Assets/Haunted_Swamp/Textures/treebranches_n.tif
+  artifactKey: Guid(1d6add50d49c9ed47b76352851e43cf9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Haunted_Swamp/Textures/treebranches_n.tif using Guid(1d6add50d49c9ed47b76352851e43cf9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'aade30126a522c160466b2759f784ead') in 0.008415 seconds 
+  Import took 0.025245 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000346 seconds.
-  path: Assets/woodshack_door.png
-  artifactKey: Guid(7e41462a0fc5bce4d9b29e9f3dd04f3f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/woodshack_door.png using Guid(7e41462a0fc5bce4d9b29e9f3dd04f3f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a631c079d88e6b2ca187f8d369255112') in 0.011250 seconds 
-  Import took 0.016653 seconds .
+  Time since last request: 0.000295 seconds.
+  path: Assets/Haunted_Swamp/Textures/tree02_c.tif
+  artifactKey: Guid(b9d6d2d274ad1394db0cc15a31124c3a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Haunted_Swamp/Textures/tree02_c.tif using Guid(b9d6d2d274ad1394db0cc15a31124c3a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8773271498d554be2acb038ae6c3518f') in 0.009764 seconds 
+  Import took 0.012796 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 69.196877 seconds.
-  path: Assets/woodshack.blend
-  artifactKey: Guid(46298c2becf6d754c972bc3220736188) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/woodshack.blend using Guid(46298c2becf6d754c972bc3220736188) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '21f682be1ea9c4873a16a88c5a5d17bd') in 0.051244 seconds 
-  Import took 0.054492 seconds .
+  Time since last request: 0.000408 seconds.
+  path: Assets/Haunted_Swamp/Textures/fallentree_n.tif
+  artifactKey: Guid(0d25acf15d2844d45bb237385d321738) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Haunted_Swamp/Textures/fallentree_n.tif using Guid(0d25acf15d2844d45bb237385d321738) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f9dab166613e723a38672dc587ba6a9d') in 0.009624 seconds 
+  Import took 0.012946 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 173.813657 seconds.
-  path: Assets/Haunted_Swamp/Prefabs
-  artifactKey: Guid(f1d26c045c2ebfa4f9a9682613c2f4db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Haunted_Swamp/Prefabs using Guid(f1d26c045c2ebfa4f9a9682613c2f4db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e21f083b43b0dad4e08e5e158d247978') in 0.002645 seconds 
-  Import took 0.006274 seconds .
+  Time since last request: 0.000228 seconds.
+  path: Assets/Haunted_Swamp/Textures/Boulder_J_n.png
+  artifactKey: Guid(e14b5f08fa5dcf140887e45828d10a2f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Haunted_Swamp/Textures/Boulder_J_n.png using Guid(e14b5f08fa5dcf140887e45828d10a2f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fbe18ad9ab01c93fd222375c723d6510') in 0.010561 seconds 
+  Import took 0.013717 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.048301 seconds.
-  path: Assets/Haunted_Swamp/Prefabs/Fallen_Tree.prefab
-  artifactKey: Guid(94f28836bb8c3fd49bcc2c0bb5d083dc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Haunted_Swamp/Prefabs/Fallen_Tree.prefab using Guid(94f28836bb8c3fd49bcc2c0bb5d083dc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '09d42404c10e481e6c26420259a0d527') in 0.127460 seconds 
-  Import took 0.130890 seconds .
+  Time since last request: 0.000274 seconds.
+  path: Assets/Haunted_Swamp/Textures/mushroom_c.tif
+  artifactKey: Guid(60d9f648c01cb7d49945a72e10aa5651) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Haunted_Swamp/Textures/mushroom_c.tif using Guid(60d9f648c01cb7d49945a72e10aa5651) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '379ca0feafb8a9c1c6838984ab0357ec') in 0.010123 seconds 
+  Import took 0.013226 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000328 seconds.
-  path: Assets/Haunted_Swamp/Prefabs/Rock_L.prefab
-  artifactKey: Guid(be185cce742024c4cabb9b0949a5e643) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Haunted_Swamp/Prefabs/Rock_L.prefab using Guid(be185cce742024c4cabb9b0949a5e643) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7b05a6dc5e86ee2eb358be3a9a3c5368') in 0.048045 seconds 
-  Import took 0.051090 seconds .
+  Time since last request: 0.000290 seconds.
+  path: Assets/Haunted_Swamp/Textures/oakBranch_s.tif
+  artifactKey: Guid(c77c717ff2c80da44b3360a79828593a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Haunted_Swamp/Textures/oakBranch_s.tif using Guid(c77c717ff2c80da44b3360a79828593a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4d87f3aea66de30631d5a49ab098cb84') in 0.008521 seconds 
+  Import took 0.011494 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000319 seconds.
-  path: Assets/Haunted_Swamp/Prefabs/Mushrooms_A.prefab
-  artifactKey: Guid(8c0c3a5ad6912a14db27a782f8d3a0ae) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Haunted_Swamp/Prefabs/Mushrooms_A.prefab using Guid(8c0c3a5ad6912a14db27a782f8d3a0ae) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '993b769a37a4d7cabd28301149f1179c') in 0.047812 seconds 
-  Import took 0.051249 seconds .
+  Time since last request: 0.000266 seconds.
+  path: Assets/Haunted_Swamp/Textures/mushroom_n.tif
+  artifactKey: Guid(eed68b678eb8ccc4e8b074db3a2001cf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Haunted_Swamp/Textures/mushroom_n.tif using Guid(eed68b678eb8ccc4e8b074db3a2001cf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '198ffe6ef61609bfa51bb8b9c05a0125') in 0.009686 seconds 
+  Import took 0.012891 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000333 seconds.
-  path: Assets/Haunted_Swamp/Prefabs/Rock_J.prefab
-  artifactKey: Guid(0930173e07b1194448f5f3e76a998fbf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Haunted_Swamp/Prefabs/Rock_J.prefab using Guid(0930173e07b1194448f5f3e76a998fbf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bcc99c85a7c5d2a92cc9eee497a07669') in 0.040170 seconds 
-  Import took 0.043220 seconds .
+  Time since last request: 0.000293 seconds.
+  path: Assets/Haunted_Swamp/Textures/Swamp_Mud_1_n.png
+  artifactKey: Guid(56babc3b547678049bf9ed69ec5cd3db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Haunted_Swamp/Textures/Swamp_Mud_1_n.png using Guid(56babc3b547678049bf9ed69ec5cd3db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5c6619d7655c83d7cb1ccecbf62ffa0c') in 0.039899 seconds 
+  Import took 0.044208 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000325 seconds.
-  path: Assets/Haunted_Swamp/Prefabs/Pampass_Grass_Terrain.prefab
-  artifactKey: Guid(8f178ee35f7b13741a94dae3268c8c51) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Haunted_Swamp/Prefabs/Pampass_Grass_Terrain.prefab using Guid(8f178ee35f7b13741a94dae3268c8c51) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6042106dd4ddf820be2dcbd730157ce5') in 0.042722 seconds 
-  Import took 0.045896 seconds .
+  Time since last request: 0.000291 seconds.
+  path: Assets/Haunted_Swamp/Textures/tree02_n.tif
+  artifactKey: Guid(14d939d02f38296418424d3e613a404c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Haunted_Swamp/Textures/tree02_n.tif using Guid(14d939d02f38296418424d3e613a404c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e3dff6cd46d18f38f84225014a659f3c') in 0.019796 seconds 
+  Import took 0.023015 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000450 seconds.
-  path: Assets/Haunted_Swamp/Prefabs/Swamp_Tree_Straight_B.prefab
-  artifactKey: Guid(554b6be73c3762846aaea1301789ac18) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Haunted_Swamp/Prefabs/Swamp_Tree_Straight_B.prefab using Guid(554b6be73c3762846aaea1301789ac18) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '55095dcbbdce9a121b9b90c1299c588a') in 0.032548 seconds 
-  Import took 0.067634 seconds .
+  Time since last request: 0.000268 seconds.
+  path: Assets/Haunted_Swamp/Textures/PampasFrond_c.tif
+  artifactKey: Guid(f7e5da1e0a1d1684bafac5e3863c0180) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Haunted_Swamp/Textures/PampasFrond_c.tif using Guid(f7e5da1e0a1d1684bafac5e3863c0180) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2ce817a67f9708ef06d45cd59cf60b95') in 0.008525 seconds 
+  Import took 0.011602 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 137.604980 seconds.
-  path: Assets/Haunted_Swamp/Materials
-  artifactKey: Guid(9295f5394f4bb1645971a664cf2864b7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Haunted_Swamp/Materials using Guid(9295f5394f4bb1645971a664cf2864b7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9ab851c07dfe328725b394a43a85d794') in 0.002174 seconds 
-  Import took 0.005791 seconds .
+  Time since last request: 0.000310 seconds.
+  path: Assets/Haunted_Swamp/Textures/treeStraight_c.tif
+  artifactKey: Guid(815b3c73f10e07e4f945f55b0cabe6d4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Haunted_Swamp/Textures/treeStraight_c.tif using Guid(815b3c73f10e07e4f945f55b0cabe6d4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1301e94029d44059ac55d60f8ffe041a') in 0.011176 seconds 
+  Import took 0.014702 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 126.082232 seconds.
-  path: Assets/mushroom_toadstool.blend
-  artifactKey: Guid(18ffb727b90970740ab0b75546721a79) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/mushroom_toadstool.blend using Guid(18ffb727b90970740ab0b75546721a79) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8777d62d7a44e1c7545f8920ca31d4b6') in 0.043072 seconds 
-  Import took 0.046366 seconds .
+  Time since last request: 0.000282 seconds.
+  path: Assets/Haunted_Swamp/Textures/treeBranches_c.tif
+  artifactKey: Guid(2d9ebff1d5b713f4b922737b0c2513ba) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Haunted_Swamp/Textures/treeBranches_c.tif using Guid(2d9ebff1d5b713f4b922737b0c2513ba) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cea8fd73af1f93248a5d960dfc79bec7') in 0.008355 seconds 
+  Import took 0.011527 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000314 seconds.
-  path: Assets/mushroom_toadstool.png
-  artifactKey: Guid(15aa8721257b4254c992837691090c8c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/mushroom_toadstool.png using Guid(15aa8721257b4254c992837691090c8c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5abb9a9d5d2b11b3c3fae49169a16bfe') in 0.011215 seconds 
-  Import took 0.014944 seconds .
+  Time since last request: 0.000326 seconds.
+  path: Assets/Haunted_Swamp/Textures/oakbranchfullleaves_n.tif
+  artifactKey: Guid(d6f21449d0ccd354288b116a69feda8b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Haunted_Swamp/Textures/oakbranchfullleaves_n.tif using Guid(d6f21449d0ccd354288b116a69feda8b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6a4e04ce3155f90bbd60d476cbd9e63f') in 0.011347 seconds 
+  Import took 0.014550 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 6.741605 seconds.
-  path: Assets/mushroom_toadstool.blend
-  artifactKey: Guid(18ffb727b90970740ab0b75546721a79) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/mushroom_toadstool.blend using Guid(18ffb727b90970740ab0b75546721a79) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '145c19179cdbcb637d30407fd4b71f08') in 0.047529 seconds 
-  Import took 0.051133 seconds .
+  Time since last request: 0.000360 seconds.
+  path: Assets/Haunted_Swamp/Textures/PampasBark_c.tif
+  artifactKey: Guid(fcc359cb78f75cb4cbbc235d85f08f11) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Haunted_Swamp/Textures/PampasBark_c.tif using Guid(fcc359cb78f75cb4cbbc235d85f08f11) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4adb464dd85dc4fba72662a934dfed64') in 0.009010 seconds 
+  Import took 0.012311 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 448.616617 seconds.
-  path: Assets/tree_oak.png
-  artifactKey: Guid(09c826c7cbc5aa646a7b4c6c092c4b82) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/tree_oak.png using Guid(09c826c7cbc5aa646a7b4c6c092c4b82) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '851e1a786fc7753305813803117c58f9') in 0.046942 seconds 
-  Import took 0.051404 seconds .
+  Time since last request: 0.000279 seconds.
+  path: Assets/Haunted_Swamp/Textures/oakBranchFullLeaves_c.tif
+  artifactKey: Guid(48d3c6e82a6de6644b3b5f2b179fe708) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Haunted_Swamp/Textures/oakBranchFullLeaves_c.tif using Guid(48d3c6e82a6de6644b3b5f2b179fe708) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd5d31f6692306695c448e205cf07b607') in 0.008359 seconds 
+  Import took 0.011447 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000298 seconds.
-  path: Assets/tree_oak01.blend
-  artifactKey: Guid(b0fed8a4331ab9f46be34a0ff494637b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/tree_oak01.blend using Guid(b0fed8a4331ab9f46be34a0ff494637b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '07c980a4b0894afa1d31cb364f1ee4cf') in 0.080464 seconds 
-  Import took 0.083929 seconds .
+  Time since last request: 0.000271 seconds.
+  path: Assets/Haunted_Swamp/Textures/PampassTop_c.tif
+  artifactKey: Guid(5e21a644f8b54a24890d7f16cc94beb3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Haunted_Swamp/Textures/PampassTop_c.tif using Guid(5e21a644f8b54a24890d7f16cc94beb3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'af661e148f0ff544e6de12a1aa3ed77b') in 0.008983 seconds 
+  Import took 0.012720 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 5.507819 seconds.
-  path: Assets/tree_oak01.blend
-  artifactKey: Guid(b0fed8a4331ab9f46be34a0ff494637b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/tree_oak01.blend using Guid(b0fed8a4331ab9f46be34a0ff494637b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '898fb507a074d9899b90de816fa839a6') in 0.098095 seconds 
-  Import took 0.101714 seconds .
+  Time since last request: 0.000332 seconds.
+  path: Assets/Haunted_Swamp/Textures/Swamp_Mud_1_c.png
+  artifactKey: Guid(a0fc075f692267d4993f5a5354b34c71) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Haunted_Swamp/Textures/Swamp_Mud_1_c.png using Guid(a0fc075f692267d4993f5a5354b34c71) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2c82b35873293763dff47f334f53a9a6') in 0.015868 seconds 
+  Import took 0.019156 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 47.817045 seconds.
+  path: Assets/Materials/Rocket.mat
+  artifactKey: Guid(01611f8bd86c2d64e9231ddb38dd5dba) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Rocket.mat using Guid(01611f8bd86c2d64e9231ddb38dd5dba) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4d92a6c7f270399d7d21650a08ee7e60') in 0.010606 seconds 
+  Import took 0.013951 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 35.773625 seconds.
+  path: Assets/Materials/Rocket.mat
+  artifactKey: Guid(01611f8bd86c2d64e9231ddb38dd5dba) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Rocket.mat using Guid(01611f8bd86c2d64e9231ddb38dd5dba) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f62b5608803ae4962cb2cfbe24d777c9') in 0.009241 seconds 
+  Import took 0.012981 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 279.060891 seconds.
+  path: Assets/tree_maple.fbx
+  artifactKey: Guid(ca4d97d2610c6a2459d396b6d3051945) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/tree_maple.fbx using Guid(ca4d97d2610c6a2459d396b6d3051945) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a02f7b3b5c7896bc7e4e10d04fd4e27f') in 0.044460 seconds 
+  Import took 0.048017 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 14.540222 seconds.
+  path: Assets/tree_maple.mat
+  artifactKey: Guid(bd0a2cc33b839e3469a4a5edf7f72884) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/tree_maple.mat using Guid(bd0a2cc33b839e3469a4a5edf7f72884) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ce38f918159d0a885477853b53285845') in 0.009256 seconds 
+  Import took 0.012790 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 36.744936 seconds.
+  path: Assets/Haunted_Swamp/Materials/oakBranch_s.mat
+  artifactKey: Guid(c09a62efc0359d6438bc42c4cfe46a5d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Haunted_Swamp/Materials/oakBranch_s.mat using Guid(c09a62efc0359d6438bc42c4cfe46a5d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e93714883b2400d8dc189cb3f97f5e7a') in 0.010716 seconds 
+  Import took 0.013871 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 20.442747 seconds.
+  path: Assets/Materials/tree_maple.png
+  artifactKey: Guid(cb09eef2c777a684f9f3b2274972a15a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/tree_maple.png using Guid(cb09eef2c777a684f9f3b2274972a15a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4c863c3687ba34771d0651183e269226') in 0.009927 seconds 
+  Import took 0.026853 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 10.589334 seconds.
+  path: Assets/Materials/Materials
+  artifactKey: Guid(553e1b32169c4d145bbae24c4bb06a29) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Materials using Guid(553e1b32169c4d145bbae24c4bb06a29) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '95e30989e02344f5e331f61d38f8fe2e') in 0.002357 seconds 
+  Import took 0.005578 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.051595 seconds.
+  path: Assets/Materials/Materials/tree_maple.mat
+  artifactKey: Guid(9138f4b98b1bea74793a2900e410f0e2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Materials/tree_maple.mat using Guid(9138f4b98b1bea74793a2900e410f0e2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd2d051b305436aeeec48ca06f6429ebe') in 0.011089 seconds 
+  Import took 0.014401 seconds .
 
 AssetImportWorkerClient::OnTransportError - code=2 error=End of file
