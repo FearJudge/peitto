@@ -6,7 +6,6 @@ using System.Diagnostics;
 
 public class FileManager : MonoBehaviour
 {
-    private Reason reason;
 
     static string path;
     public static List<TextData> ruleDatas = new List<TextData>
@@ -18,20 +17,7 @@ public class FileManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        reason = gameObject.GetComponent<Reason>();
         path = Application.dataPath + "\\..\\Reasoning\\";
-        CreateFile(ruleDatas[0]);
-        CreateFile(ruleDatas[2]);
-    }
-
-    private void OnApplicationFocus(bool focus)
-    {
-        if (!focus || reason == null) { return; }
-        reason.BackInGame();
-        int a = CheckFileForAnswers(ruleDatas[0]);
-        if (a == -1) { reason.StartEffect(Reason.Reasoning.JumpOnce); }
-        int b = CheckFileForAnswers(ruleDatas[2]);
-        if (b == -1) { reason.StartEffect(Reason.Reasoning.InfinteRun); }
     }
 
     public static void OpenFileFolder()

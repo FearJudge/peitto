@@ -10,6 +10,7 @@ public class Reason : MonoBehaviour
     public static int insanity = 0;
     int glitches = 0;
     bool insanityLower = false;
+    List<Reasoning> activeReasonings = new List<Reasoning>();
 
     public enum Reasoning
     {
@@ -25,6 +26,7 @@ public class Reason : MonoBehaviour
 
     public void StartEffect(Reasoning eff)
     {
+        if (activeReasonings.Contains(eff)) { return; }
         StartCoroutine(Glitch(eff));
     }
 
@@ -33,14 +35,14 @@ public class Reason : MonoBehaviour
         switch (eff)
         {
             case Reasoning.JumpOnce:
-                if (state) { playerBody.Midairjumps = 3; }
-                else { playerBody.Midairjumps = 0; insanity += 15; FileManager.CreateFile(FileManager.ruleDatas[0]); }
+                if (state) { playerBody.Midairjumps = 3; insanity += 15; }
+                else { playerBody.Midairjumps = 0;}
                 break;
             case Reasoning.GoThroughSubSet:
                 break;
             case Reasoning.InfinteRun:
-                if (state) { playerBody.unexhaustable = true; }
-                else { playerBody.unexhaustable = false; insanity += 8; FileManager.CreateFile(FileManager.ruleDatas[2]); }
+                if (state) { playerBody.unexhaustable = true; insanity += 8; }
+                else { playerBody.unexhaustable = false;}
                 break;
             default:
                 break;
@@ -60,7 +62,8 @@ public class Reason : MonoBehaviour
         while (insanity > 0)
         {
             Debug.Log(string.Format("Hidden Variable Insanity: {0}", insanity));
-            yield return new WaitForSeconds(insanity / 2f);
+            playerEyes.Insanity();
+            yield return new WaitForSeconds(5f);
             CheckInsanity();
             insanity--;
         }
@@ -70,14 +73,15 @@ public class Reason : MonoBehaviour
 
     IEnumerator Glitch(Reasoning eff)
     {
-        glitches++;
         SetEffect(eff, true);
-        StartCoroutine(playerEyes.Glitch());
-        yield return new WaitForSeconds(20f);
-        glitches--;
-        SetEffect(eff, false);
-        if (glitches == 0) { playerEyes.Glitching = false; }
+        if (activeReasonings.Count == 0) { StartCoroutine(playerEyes.Glitch()); }
+        activeReasonings.Add(eff);
         if (!insanityLower) { StartCoroutine(InsanityFix()); }
         if (insanity > 100) { insanity = 100; }
+        playerEyes.Insanity();
+        yield return new WaitForSeconds(20f);
+        SetEffect(eff, false);
+        activeReasonings.Remove(eff);
+        if (activeReasonings.Count == 0) { playerEyes.Glitching = false; }
     }
 }

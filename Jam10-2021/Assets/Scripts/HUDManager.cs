@@ -8,9 +8,14 @@ public class HUDManager : MonoBehaviour
     Color[] cols = new Color[] { new Color(0, 0.6f, 0.2f), new Color(0, 0, 0.7f), new Color(0.8f, 0.4f, 0.4f), new Color(0.2f, 0, 0.5f), new Color(0.2f, 0.9f, 0.3f), new Color(0.4f, 0.1f, 0.9f) };
 
     public Slider staminaSlider;
-    public Slider[] SetOfGlitches;
     public Button quitButton;
     public Button returnToGame;
+    public Image insanity;
+    public RectTransform pingBase;
+    public Animator[] insanityPingAnimations;
+    public AudioSource insanityPingSound;
+    int inValue = 0;
+    bool filling = false;
     public bool Glitching = false;
 
     public void SetStamina(int value)
@@ -33,6 +38,25 @@ public class HUDManager : MonoBehaviour
         returnToGame.gameObject.SetActive(false);
     }
 
+    public void Insanity()
+    {
+        StartCoroutine(FillInsanity());
+    }
+
+    IEnumerator FillInsanity()
+    {
+        if (filling) { yield break; }
+        filling = true;
+        while (inValue != Reason.insanity * 4)
+        {
+            if (Reason.insanity * 4 > inValue) { inValue++; }
+            else if (Reason.insanity * 4 < inValue) { inValue--; }
+            insanity.fillAmount = inValue / 400f;
+            yield return new WaitForSeconds(0.1f);
+        }
+        filling = false;
+    }
+
     public void QuitToDesk()
     {
         Debug.Log("GONE");
@@ -40,22 +64,19 @@ public class HUDManager : MonoBehaviour
     }
 
     public IEnumerator Glitch()
-    {
+    { 
         Glitching = true;
+        insanityPingSound.Play();
+        for (int a = 0; a < insanityPingAnimations.Length; a++)
+        {
+            yield return new WaitForSeconds(Random.Range(0.01f, 0.06f));
+            insanityPingAnimations[a].SetTrigger("InPing");
+        }
         while (Glitching)
         {
-            for (int a = 0; a < SetOfGlitches.Length; a++)
-            {
-                SetOfGlitches[a].value = Random.Range(0f, 1f);
-                ColorBlock g = SetOfGlitches[a].colors;
-                g.disabledColor = GetGlitchColor();
-                SetOfGlitches[a].colors = g;
-            }
-            yield return new WaitForSeconds(0.1f);
-        }
-        for (int b = 0; b < SetOfGlitches.Length; b++)
-        {
-            SetOfGlitches[b].value = 0;
+            yield return new WaitForSeconds(Random.Range(0.15f,0.9f));
+            pingBase.anchoredPosition = new Vector2(150, Random.Range(-250, -151));
+            insanityPingAnimations[Random.Range(0, insanityPingAnimations.Length)].SetTrigger("InPing");
         }
     }
 

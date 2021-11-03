@@ -54,14 +54,18 @@ public class PlayerMovement : MonoBehaviour
     public int doubleFootsteps = 0;
     int terrainsound = 0;
     float leghurt = 0.2f;
+    float startangle = 0;
     public HUDManager hud;
+    Reason mind;
 
     // Start is called before the first frame update
     void Start()
     {
+        mind = gameObject.GetComponent<Reason>();
         myrb = gameObject.GetComponent<Rigidbody>();
         ResetGravity();
         Cursor.lockState = CursorLockMode.Locked;
+        startangle = Quaternion.Angle(new Quaternion(0, 0, 0, 1), transform.rotation);
     }
 
     public static void ResetGravity()
@@ -79,7 +83,7 @@ public class PlayerMovement : MonoBehaviour
 
     void OpenFiles()
     {
-        if (Input.GetKeyDown(KeyCode.Q)) { FileManager.OpenFileFolder(); }
+        if (Input.GetKeyDown(KeyCode.Alpha1)) { mind.StartEffect(Reason.Reasoning.JumpOnce); }
         if (Input.GetKeyDown(KeyCode.Escape)) { hud.ShowQuit(true); }
     }
 
@@ -94,7 +98,7 @@ public class PlayerMovement : MonoBehaviour
 
         // Rotate camera up-down and controller left-right from velocity.
         Camera.main.transform.localRotation = Quaternion.AngleAxis(-velocity.y, Vector3.right);
-        transform.rotation = Quaternion.AngleAxis(velocity.x, Vector3.up);
+        transform.rotation = Quaternion.AngleAxis(startangle + velocity.x, Vector3.up);
     }
 
     // Update is called once per frame
@@ -123,7 +127,7 @@ public class PlayerMovement : MonoBehaviour
         else if (speed > thresholdForDir && sprintframes > 0 && sprintable) { sprinting = true; sprintframes = 20; }
         // Holding up starts sprint countdown
         else if (speed > thresholdForDir) { sprintframes = 30; }
-        if (Mathf.Abs(speed) > thresholdForDir && !airborne)
+        if (((Mathf.Abs(speed) > thresholdForDir) || (Mathf.Abs(strafe) > thresholdForDir)) && !airborne)
         {
             if (sprinting && st > 0 && !exhausted)
             {

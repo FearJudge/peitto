@@ -26,6 +26,6 @@ public class BreathingObject : MonoBehaviour
         breathScale += breathScaleSpeed * dir * Mathf.Clamp((breathScale - breathScaleMin), 0.02f, 1);
         if (breathScale < breathScaleMin) { dir = 1; }
         else if (breathScale > breathScaleMax) { dir = -1; }
-        transform.localScale = Vector3.one * breathScale;
+        transform.localScale = new Vector3(breathScale, 1/ breathScale, breathScale);
     }
 }
