@@ -56,6 +56,7 @@ public class Reason : MonoBehaviour
         switch (effect)
         {
             case 1:
+                if (insanity < 30) { return; }
                 playerBody.invertedControls = Random.Range(500, 800);
                 break;
             case 2:
