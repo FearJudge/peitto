@@ -8526,6 +8526,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1887165622}
     m_Modifications:
+    - target: {fileID: 415994498624245239, guid: 4bc7a3a4d2ed6974abae4e0cba00575a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.66
+      objectReference: {fileID: 0}
+    - target: {fileID: 3130361070834643646, guid: 4bc7a3a4d2ed6974abae4e0cba00575a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 3130361070834643646, guid: 4bc7a3a4d2ed6974abae4e0cba00575a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3130361070834643646, guid: 4bc7a3a4d2ed6974abae4e0cba00575a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 3.41
+      objectReference: {fileID: 0}
     - target: {fileID: 5541041778127469509, guid: 4bc7a3a4d2ed6974abae4e0cba00575a, type: 3}
       propertyPath: m_Name
       value: prefab_beech_tree_05 (2)
@@ -23085,6 +23101,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1887165622}
     m_Modifications:
+    - target: {fileID: 415994498624245239, guid: 4bc7a3a4d2ed6974abae4e0cba00575a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -9.31
+      objectReference: {fileID: 0}
+    - target: {fileID: 3130361070834643646, guid: 4bc7a3a4d2ed6974abae4e0cba00575a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 6.48
+      objectReference: {fileID: 0}
     - target: {fileID: 5541041778127469509, guid: 4bc7a3a4d2ed6974abae4e0cba00575a, type: 3}
       propertyPath: m_Name
       value: prefab_beech_tree_05
@@ -36266,6 +36290,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1887165622}
     m_Modifications:
+    - target: {fileID: 415994498624245239, guid: 4bc7a3a4d2ed6974abae4e0cba00575a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.56
+      objectReference: {fileID: 0}
+    - target: {fileID: 3130361070834643646, guid: 4bc7a3a4d2ed6974abae4e0cba00575a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2.28
+      objectReference: {fileID: 0}
     - target: {fileID: 5541041778127469509, guid: 4bc7a3a4d2ed6974abae4e0cba00575a, type: 3}
       propertyPath: m_Name
       value: prefab_beech_tree_05 (5)
@@ -48642,6 +48674,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1887165622}
     m_Modifications:
+    - target: {fileID: 415994498624245239, guid: 4bc7a3a4d2ed6974abae4e0cba00575a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 3130361070834643646, guid: 4bc7a3a4d2ed6974abae4e0cba00575a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.97
+      objectReference: {fileID: 0}
     - target: {fileID: 5541041778127469509, guid: 4bc7a3a4d2ed6974abae4e0cba00575a, type: 3}
       propertyPath: m_Name
       value: prefab_beech_tree_05 (4)
