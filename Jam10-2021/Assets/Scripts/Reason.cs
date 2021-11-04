@@ -35,7 +35,7 @@ public class Reason : MonoBehaviour
         switch (eff)
         {
             case Reasoning.JumpOnce:
-                if (state) { playerBody.Midairjumps = 3; insanity += 15; }
+                if (state) { playerBody.Midairjumps = 1; insanity += 15; }
                 else { playerBody.Midairjumps = 0;}
                 break;
             case Reasoning.GoThroughSubSet:
@@ -51,8 +51,25 @@ public class Reason : MonoBehaviour
 
     public void CheckInsanity()
     {
-        if (Random.Range(0, 100) > insanity) { return; }
-        playerBody.doubleFootsteps =Random.Range(20, 50);
+        if (Random.Range(0, 100) > 12) { return; }
+        int effect = Random.Range(0, 4);
+        switch (effect)
+        {
+            case 1:
+                playerBody.invertedControls = Random.Range(500, 800);
+                break;
+            case 2:
+                string[] randomQuotes = new string[] { "Why you Little!", "Press [Alt + F4] for GOD MODE!", "Up is Down, Down is still Down. Always Down.", "1+1=2. 2+2=4. Quick Maths." };
+                playerEyes.Think(randomQuotes[Random.Range(0, randomQuotes.Length)]);
+                break;
+            case 3:
+                AudioScript.PlaySFX(Random.Range(2,4), 0.8f, 1f);
+                break;
+            default:
+                playerBody.doubleFootsteps = Random.Range(4, 20);
+                break;
+        }
+        
     }
 
     IEnumerator InsanityFix()

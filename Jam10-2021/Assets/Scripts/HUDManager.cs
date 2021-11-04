@@ -10,10 +10,15 @@ public class HUDManager : MonoBehaviour
     public Slider staminaSlider;
     public Button quitButton;
     public Button returnToGame;
+    public GameObject BrainHud;
     public Image insanity;
     public RectTransform pingBase;
     public Animator[] insanityPingAnimations;
     public AudioSource insanityPingSound;
+    public Animator thoughts;
+    public TMPro.TextMeshProUGUI thinkingText;
+    public GameObject powerList;
+    public GameObject[] powerButtons;
     int inValue = 0;
     bool filling = false;
     public bool Glitching = false;
@@ -28,13 +33,27 @@ public class HUDManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         if (state) { state = !quitButton.gameObject.activeSelf; }
         if (!state) { ReFocus(); }
-        else { quitButton.gameObject.SetActive(true); returnToGame.gameObject.SetActive(true); }
+        else
+        {
+            powerList.SetActive(true); quitButton.gameObject.SetActive(true); returnToGame.gameObject.SetActive(true);
+            for (int a = 0; a < powerButtons.Length; a++)
+            {
+                if (PlayerMovement.powersUnlocked.Contains(a)) { powerButtons[a].SetActive(true); } else { powerButtons[a].SetActive(false); }
+            }
+        }
+    }
+
+    public void Think(string say)
+    {
+        thoughts.SetTrigger("Thought");
+        thinkingText.text = say;
     }
 
     public void ReFocus()
     {
         Cursor.lockState = CursorLockMode.Locked;
         quitButton.gameObject.SetActive(false);
+        powerList.SetActive(false);
         returnToGame.gameObject.SetActive(false);
     }
 
@@ -55,6 +74,11 @@ public class HUDManager : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
         }
         filling = false;
+    }
+
+    public void ShowBrain(bool state)
+    {
+        BrainHud.SetActive(state);
     }
 
     public void QuitToDesk()

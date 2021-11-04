@@ -38,6 +38,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]int sprintframes = 0;
     int recoveryframes = 0;
     int st = 100;
+    public int invertedControls = 0;
     public float sensitivity = 2;
     public float smoothing = 1.5f;
     Vector2 velocity;
@@ -46,6 +47,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] bool sprinting = false;
     public bool unexhaustable = false;
     bool exhausted = false;
+    float moved = 0f;
+    Vector3 prevFrame = new Vector3();
     bool landIncoming = false;
     public AudioClip[] terrainsounds;
     public AudioClip[] gasps;
@@ -56,6 +59,12 @@ public class PlayerMovement : MonoBehaviour
     float leghurt = 0.2f;
     float startangle = 0;
     public HUDManager hud;
+    public static List<int> powersUnlocked = new List<int>();
+    public static List<string> powerDescriptions = new List<string>()
+    {
+        "Double Jump",
+        "Infinite Stamina"
+    };
     Reason mind;
 
     // Start is called before the first frame update
@@ -83,17 +92,45 @@ public class PlayerMovement : MonoBehaviour
 
     void OpenFiles()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1)) { mind.StartEffect(Reason.Reasoning.JumpOnce); }
+        if (Input.GetKeyDown(KeyCode.Alpha1) && powersUnlocked.Contains(0)) { UsePower(0); }
+        if (Input.GetKeyDown(KeyCode.Alpha2) && powersUnlocked.Contains(1)) { UsePower(1); }
         if (Input.GetKeyDown(KeyCode.Escape)) { hud.ShowQuit(true); }
+    }
+
+    public void UsePower(int index)
+    {
+        switch (index)
+        {
+            case 0:
+                mind.StartEffect(Reason.Reasoning.JumpOnce);
+                break;
+            case 1:
+                mind.StartEffect(Reason.Reasoning.InfinteRun);
+                break;
+            default:
+                break;
+        }
+        hud.ShowQuit(false);
+    }
+
+    public static bool GainPower(int index, bool remove=false)
+    {
+        GameObject.Find("Player").GetComponentInChildren<HUDManager>().Think(string.Format("Press [{0}] to activate {1}", index + 1, powerDescriptions[index]));
+        int POWERSINGAME = powerDescriptions.Count;
+        if (!powersUnlocked.Contains(index) && index >= 0 && index < POWERSINGAME && !remove) { powersUnlocked.Add(index); return true; }
+        else if (powersUnlocked.Contains(index) && remove) { powersUnlocked.Remove(index); return true; }
+        return false;
     }
 
     void CaptureMouse()
     {
+        if (hud.quitButton.gameObject.activeSelf == true) { return; }
         // Get smooth velocity.
         Vector2 mouseDelta = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
         Vector2 rawFrameVelocity = Vector2.Scale(mouseDelta, Vector2.one * sensitivity);
         frameVelocity = Vector2.Lerp(frameVelocity, rawFrameVelocity, 1 / smoothing);
-        velocity += frameVelocity;
+        if (invertedControls > 0) { velocity -= frameVelocity; }
+        else { velocity += frameVelocity; }
         velocity.y = Mathf.Clamp(velocity.y, -90, 90);
 
         // Rotate camera up-down and controller left-right from velocity.
@@ -105,7 +142,6 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         Move();
-        //Rotate();
         CheckVelocity(repeatedchecks);
     }
 
@@ -151,11 +187,6 @@ public class PlayerMovement : MonoBehaviour
         myrb.AddForce(transform.right * strafe * movementspeed, ForceMode.Acceleration);
     }
 
-    void Rotate()
-    {
-        transform.Rotate(new Vector3(0, Input.GetAxis("Horizontal") * rotationspeed, 0));
-    }
-
     void Jump()
     {
         if (Input.GetButtonDown("Submit") && (!airborne || jumps > 0))
@@ -170,12 +201,14 @@ public class PlayerMovement : MonoBehaviour
 
     private void CheckVelocity(int check)
     {
-        if (myrb.velocity.y == 0 && airborne) { repeatedchecks++; }
+        Debug.Log(Vector3.Distance(prevFrame, transform.position));
+        if (Vector3.Distance(prevFrame, transform.position) <= 0.05f && airborne) { repeatedchecks++; }
         else { repeatedchecks = 0; }
-        if (repeatedchecks > 3) { airborne = false; }
-        if (transform.position.y < -300) { transform.position = Vector3.zero; }
+        if (repeatedchecks > 300) { airborne = false; }
+        if (transform.position.y < -300) { transform.position = Vector3.up * 40; }
         if (myrb.velocity.y < -6f && recoveryframes == 0) { airborne = true; }
         if (recoveryframes > 0) { recoveryframes--; }
+        prevFrame = transform.position;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -192,6 +225,7 @@ public class PlayerMovement : MonoBehaviour
             movespeed = 1f;
             if (percentage < 0.28f) { return; }
             GetSoundOf(FoliageSounds.GrassLand);
+            leghurt = 0.8f - (percentage * 0.4f);
             footsteps[0].pitch = 1f - percentage * 0.2f;
             recoveryframes = 30;
             dir = -1;
@@ -216,17 +250,44 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (hbopscale > hbophigh) { dir = -1; hbophigh = 0.13f; GetSoundOf(FoliageSounds.GrassWalk); }
         headCamera.transform.localPosition = Vector3.up * hbopscale + offsetCam;
+        if (invertedControls > 0) { invertedControls--; }
     }
 
     private void GetSoundOf(FoliageSounds soundbyte)
     {
+        int minoffset = 0;
+        int maxoffset = 0;
+        RaycastHit rch;
+        Ray ray = new Ray(transform.position, Vector3.down);
+        bool hit = Physics.Raycast(ray, out rch, 7);
+        if (!hit) { return; }
+        switch (rch.transform.tag)
+        {
+            case "untagged":
+                break;
+            case "Rock":
+                minoffset = 6;
+                maxoffset = 6;
+                break;
+            case "Wood":
+                minoffset = 12;
+                maxoffset = 12;
+                break;
+            case "Mud":
+                minoffset = 18;
+                maxoffset = 17;
+                break;
+            default:
+                break;
+        }
+            
         switch (soundbyte)
         {
             case FoliageSounds.GrassWalk:
-                terrainsound = Random.Range(0, 2);
+                terrainsound = Random.Range(0 + minoffset, 2 + maxoffset);
                 return;
             case FoliageSounds.GrassLand:
-                terrainsound = Random.Range(3, 5);
+                terrainsound = Random.Range(3 + minoffset, 5 + maxoffset);
                 return;
             default:
                 terrainsound = 0;
