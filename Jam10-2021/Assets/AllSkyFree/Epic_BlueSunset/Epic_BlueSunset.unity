@@ -98,7 +98,11 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 112000001, guid: 751a56d713a46ed40bfa0236171a535a, type: 2}
+<<<<<<< Updated upstream
   m_LightingSettings: {fileID: 4890085278179872738, guid: e4a446e739c27d947b25aefb1c76f018, type: 2}
+=======
+  m_LightingSettings: {fileID: 4890085278179872738, guid: 9301d1d6dc100284b874655e8d20c9ef, type: 2}
+>>>>>>> Stashed changes
 --- !u!196 &5
 NavMeshSettings:
   serializedVersion: 2
@@ -214,7 +218,11 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
+<<<<<<< Updated upstream
   m_RootOrder: 1
+=======
+  m_RootOrder: 0
+>>>>>>> Stashed changes
   m_LocalEulerAnglesHint: {x: 169.211, y: 0.5239868, z: -0.16400146}
 --- !u!1001 &1707625547
 PrefabInstance:
