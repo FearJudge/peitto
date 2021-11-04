@@ -365,7 +365,7 @@ RectTransform:
   - {fileID: 8981444598419338807}
   - {fileID: 709301045153874010}
   m_Father: {fileID: 7211760446079884180}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -874,7 +874,7 @@ RectTransform:
   - {fileID: 3644663099797855160}
   - {fileID: 1133251075524491005}
   m_Father: {fileID: 7211760446079884180}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1458,11 +1458,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7211760446079884180}
-  m_RootOrder: 5
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -700, y: 310.05634}
+  m_AnchoredPosition: {x: -700, y: 310}
   m_SizeDelta: {x: 800, y: 50}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &4335171174021405852
@@ -1559,7 +1559,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!95 &9047642575908145032
@@ -1771,9 +1771,9 @@ RectTransform:
   - {fileID: 7211760447883321674}
   - {fileID: 8383140287606887675}
   - {fileID: 8244750259766497091}
-  - {fileID: 4456893052779420948}
   - {fileID: 692947973338409867}
   - {fileID: 3746142461060008436}
+  - {fileID: 4456893052779420948}
   m_Father: {fileID: 7211760446851082900}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2467,7 +2467,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 170
+  far clip plane: 400
   field of view: 60
   orthographic: 0
   orthographic size: 5

@@ -14,7 +14,7 @@ public static class SceneControls
         SceneManager.LoadScene(toLoad);
     }
 
-    public static IEnumerator LoadSceneInBG(string scene)
+    public static IEnumerator LoadSceneInBG(string scene, int bgm = 0)
     {
         AsyncOperation b = SceneManager.LoadSceneAsync(scene);
         b.allowSceneActivation = false;
@@ -26,8 +26,13 @@ public static class SceneControls
         {
             yield return null;
         }
-        AudioScript.PlayBGM(0, 0.7f, 1f);
+        if (bgm != -1) { AudioScript.PlayBGM(bgm, 0.7f, 1f); }
         b.allowSceneActivation = true;
         allowTransition = false;
+    }
+    public static IEnumerator waitAllowC(float t)
+    {
+        yield return new WaitForSeconds(t);
+        allowTransition = true;
     }
 }

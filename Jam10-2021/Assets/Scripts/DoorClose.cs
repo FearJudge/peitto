@@ -20,11 +20,11 @@ public class DoorClose : MonoBehaviour
     void FixedUpdate()
     {
         if (!action) { return; }
-        AudioScript.PlaySFX(1, 0.7f, 1f);
+        if (t == 0) { AudioScript.PlaySFX(1, 0.7f, 1f); }
         t += 0.01f;
-        if (!doorClosed) { door.localRotation = Quaternion.Lerp(Quaternion.Euler(open), Quaternion.Euler(closed), t); }
+        if (doorClosed) { door.localRotation = Quaternion.Lerp(Quaternion.Euler(open), Quaternion.Euler(closed), t); }
         else { door.localRotation = Quaternion.Lerp(Quaternion.Euler(closed), Quaternion.Euler(open), t); }
-        if (t >= 1) { action = false; t = 0; if (!doorClosed) { StartCoroutine(OpenAgain(openAfterClose)); } if (!doorClosed && hideOnClose != null) { hideOnClose.SetActive(false); } else { if (!onceOnly) { available = true; } } }
+        if (t >= 1) { action = false; t = 0; if (doorClosed) { StartCoroutine(OpenAgain(openAfterClose)); } if (doorClosed && hideOnClose != null) { hideOnClose.SetActive(false); } else { if (!onceOnly) { available = true; } } }
     }
 
     IEnumerator OpenAgain(float t)
@@ -38,7 +38,7 @@ public class DoorClose : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer != 7) { return; }
+        if (other.gameObject.layer != 7 || !available) { return; }
         available = false;
         doorClosed = !doorClosed;
         action = true;

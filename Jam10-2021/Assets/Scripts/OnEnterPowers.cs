@@ -27,7 +27,7 @@ public class OnEnterPowers : MonoBehaviour
             if (saySomething) { StartCoroutine(SayAfter(waitToSay, pm)); }
         }
         if (addPower) { PlayerMovement.GainPower(powerIndex, removePowerInstead); }
-        if (loadScene) { StartCoroutine(SceneControls.LoadSceneInBG(sceneToLoad)); SceneControls.allowTransition = true; }
+        if (loadScene) { StartCoroutine(SceneControls.LoadSceneInBG(sceneToLoad, 2)); StartCoroutine(SceneControls.waitAllowC(6f)); }
     }
 
     IEnumerator SayAfter(float delay, PlayerMovement pm)
