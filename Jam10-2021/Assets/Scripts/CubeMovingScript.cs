@@ -18,7 +18,7 @@ public class CubeMovingScript : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
-        transform.Translate(Vector3.right * speed * Time.deltaTime);
+        transform.Translate(Vector3.up * speed * Time.deltaTime);
 
         if (timer >= timeToChange)
         {
